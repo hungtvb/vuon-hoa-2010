@@ -117,7 +117,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .game-card .badge svg,.game-card .badge img{width:18px; height:18px; margin:0}
 
 /* ---------- Game boards ---------- */
-.board{display:grid; gap:8px;}
+.board{display:grid; gap:8px; justify-content:center; margin:0 auto; position:relative; z-index:2}
 #g1Board{gap:6px;}
 /* màn hình thấp (iPhone + thanh Safari): thu board ghép hoa cho khỏi cutoff */
 @media (max-height:750px){
@@ -126,7 +126,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   #screen-g1 .hud{margin-bottom:6px}
   #screen-g1 .topbar{margin-bottom:6px}
   #screen-g1{padding-top:14px}
-} justify-content:center; margin:0 auto; position:relative; z-index:2}
+}
 .cell{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
   aspect-ratio:1; display:flex; align-items:center; justify-content:center;
   cursor:pointer; transition:transform .2s ease-out, border-color .2s, box-shadow .2s; position:relative;
