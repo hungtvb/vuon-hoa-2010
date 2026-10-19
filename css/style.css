@@ -55,7 +55,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   display:flex;align-items:center;justify-content:center; transition:all .25s ease-out}
 .fslot.won{border:2px solid var(--accent); box-shadow:var(--shadow-lift); animation:pop .45s ease}
 .fslot svg,.fslot img{width:40px;height:40px; filter:grayscale(1); opacity:.35}
-.fslot.won svg{filter:none; opacity:1}
+.fslot.won svg,.fslot.won img{filter:none; opacity:1}
 
 /* ---------- Cards & buttons ---------- */
 .card{background:var(--cream); border:1px solid rgba(157,132,182,.25); border-radius:var(--r-sm);
@@ -112,6 +112,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   background:var(--leaf-deep); border-radius:50%; display:none; align-items:center;
   justify-content:center; border:2px solid #fff}
 .game-card.done .badge{display:flex}
+.game-card .badge svg,.game-card .badge img{width:18px; height:18px; margin:0}
 
 /* ---------- Game boards ---------- */
 .board{display:grid; gap:8px; justify-content:center; margin:0 auto; position:relative; z-index:2}
