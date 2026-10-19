@@ -1,0 +1,96 @@
+/* ================= STATE + NAV ================= */
+const S = { won:[false,false,false,false] };
+const GAME_META = [
+  { name:"Ghép Hoa", desc:"Chạm 2 bông giống nhau để tiến hóa", flower:"bloomX" },
+  { name:"Nối Cặp", desc:"Nối 2 icon giống nhau, đường gấp ≤ 2 lần", flower:"rose" },
+  { name:"Trí Nhớ", desc:"Lật thẻ tìm 8 cặp hoa", flower:"daisy" },
+  { name:"Hứng Hoa", desc:"Kéo giỏ hứng cánh hoa rơi", flower:"tulip" },
+];
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
+}
+function renderProgress(){
+  const el = document.getElementById("menuProgress");
+  el.innerHTML = GAME_META.map((g,i)=>
+    `<div class="fslot${S.won[i]?" won":""}">${SPR[g.flower]()}</div>`).join("");
+}
+function renderMenu(){
+  renderProgress();
+  const grid = document.getElementById("menuGrid");
+  grid.innerHTML = GAME_META.map((g,i)=>`
+    <div class="game-card${S.won[i]?" done":""}" data-game="${i}">
+      <div class="badge">${SPR.check()}</div>
+      ${SPR[g.flower]()}
+      <div class="gname">${g.name}</div>
+      <div class="gdesc">${g.desc}</div>
+    </div>`).join("");
+  grid.querySelectorAll(".game-card").forEach(c=>{
+    c.addEventListener("click", ()=> startGame(+c.dataset.game));
+  });
+  let btn = document.getElementById("btnFinale");
+  if(!btn){
+    btn = document.createElement("button");
+    btn.id = "btnFinale"; btn.className = "btn"; btn.style.marginTop = "14px";
+    btn.textContent = "Mở món quà cuối";
+    document.getElementById("screen-menu").appendChild(btn);
+  }
+  const n = S.won.filter(Boolean).length;
+  btn.disabled = n < 4;
+  btn.textContent = n < 4 ? `Hái thêm ${4-n} bông nữa để mở quà` : "Mở món quà cuối";
+  btn.onclick = ()=>{ if(S.won.every(Boolean)) openFinale(); };
+}
+function startGame(i){
+  show("screen-g"+(i+1));
+  [initG1,initG2,initG3,initG4][i]();
+}
+function showLose(text, retryFn){
+  document.getElementById("loseIcon").innerHTML = SPR.wilt();
+  document.getElementById("loseText").textContent = text;
+  document.getElementById("loseModal").classList.add("show");
+  document.getElementById("btnLoseRetry").onclick = ()=>{
+    document.getElementById("loseModal").classList.remove("show");
+    retryFn();
+  };
+  document.getElementById("btnLoseMenu").onclick = ()=>{
+    document.getElementById("loseModal").classList.remove("show");
+    show("screen-menu"); renderMenu();
+  };
+}
+function showWin(i, text){
+  document.getElementById("winFlower").innerHTML = SPR[GAME_META[i].flower]();
+  document.getElementById("winText").textContent = text;
+  document.getElementById("winModal").classList.add("show");
+  document.getElementById("btnWinNext").onclick = ()=>{
+    document.getElementById("winModal").classList.remove("show");
+    S.won[i] = true;
+    show("screen-menu"); renderMenu();
+  };
+}
+document.querySelectorAll("[data-nav]").forEach(b=>
+  b.addEventListener("click", ()=>{ show("screen-"+b.dataset.nav); renderMenu(); }));
+document.getElementById("btnStart").addEventListener("click", ()=>{ show("screen-menu"); renderMenu(); });
+document.getElementById("btnReplay").addEventListener("click", ()=>{
+  S.won = [false,false,false,false]; show("screen-menu"); renderMenu();
+});
+// cover decoration
+document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SPR.bloom1();
+(function(){
+  const b = document.createElement("div");
+  b.className = "butterfly"; b.style.cssText = "top:12%; left:8%; width:44px";
+  b.innerHTML = SPR.butterfly();
+  const b2 = b.cloneNode(true); b2.style.cssText = "top:22%; right:10%; width:36px; animation-delay:1.2s";
+  b2.innerHTML = SPR.bee();
+  document.getElementById("screen-cover").append(b, b2);
+  // cánh hoa rơi trang trí cover
+  const cov = document.getElementById("screen-cover");
+  const pcols = ["#F06292","#FF9E6D","#FFD54F","#F8BBD0"];
+  for(let i=0;i<10;i++){
+    const p = document.createElement("div");
+    p.className = "petal";
+    const s = 9+Math.random()*9;
+    p.style.cssText = `left:${Math.random()*100}%; width:${s}px; height:${s}px; border-radius:60% 0; background:${pcols[i%4]}; animation-duration:${6+Math.random()*6}s; animation-delay:${Math.random()*6}s;`;
+    cov.appendChild(p);
+  }
+})();
