@@ -1,5 +1,7 @@
 /* ================= GAME 4: HỨNG HOA ================= */
 let g4 = null;
+const CATCH_IMGS = {};
+["rose","goldflower","wilt"].forEach(n=>{ const im = new Image(); im.src = SPR_DIR+n+".png"; CATCH_IMGS[n]=im; });
 function initG4(){
   const cv = document.getElementById("catchCanvas");
   const ctx = cv.getContext("2d");
@@ -28,7 +30,7 @@ function initG4(){
     if(t - g4.last > 650){
       g4.last = t;
       const r = Math.random();
-      const type = r<0.62 ? "rose" : r<0.8 ? "sun" : "wilt";
+      const type = r<0.62 ? "rose" : r<0.8 ? "gold" : "wilt";
       g4.items.push({ x: 20+Math.random()*320, y:-20, vy: 1.6+Math.random()*1.4, type, rot: Math.random()*6.28 });
     }
     // update
@@ -37,7 +39,7 @@ function initG4(){
     g4.items = g4.items.filter(it=>{
       if(it.y > 372 && it.y < 410 && Math.abs(it.x - g4.bx) < 46){
         if(it.type==="rose") g4.score += 10;
-        else if(it.type==="sun") g4.score += 20;
+        else if(it.type==="gold") g4.score += 20;
         else g4.score = Math.max(0, g4.score - 15);
         document.getElementById("g4Score").textContent = g4.score;
         return false;
@@ -55,20 +57,8 @@ function drawG4(){
   // items
   g4.items.forEach(it=>{
     ctx.save(); ctx.translate(it.x, it.y); ctx.rotate(it.rot);
-    if(it.type==="wilt"){
-      ctx.fillStyle = "#A68B1F"; ctx.strokeStyle = INK; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.ellipse(0,0,13,8,0,0,6.29); ctx.fill(); ctx.stroke();
-    } else {
-      const c = it.type==="rose" ? "#FF9EBB" : "#FFE082";
-      for(let i=0;i<5;i++){
-        ctx.save(); ctx.rotate(i*6.28/5);
-        ctx.fillStyle = c; ctx.strokeStyle = INK; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.ellipse(0,-9,6,9,0,0,6.29); ctx.fill(); ctx.stroke();
-        ctx.restore();
-      }
-      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(0,0,5,0,6.29); ctx.fill();
-      ctx.strokeStyle = INK; ctx.lineWidth = 2; ctx.stroke();
-    }
+    const im = CATCH_IMGS[it.type==="gold" ? "goldflower" : it.type];
+    if(im && im.complete && im.naturalWidth) ctx.drawImage(im, -22, -22, 44, 44);
     ctx.restore();
   });
   // basket

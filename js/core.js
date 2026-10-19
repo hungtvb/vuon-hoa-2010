@@ -19,13 +19,20 @@ function renderProgress(){
 function renderMenu(){
   renderProgress();
   const grid = document.getElementById("menuGrid");
-  grid.innerHTML = GAME_META.map((g,i)=>`
-    <div class="game-card${S.won[i]?" done":""}" data-game="${i}">
-      <div class="badge">${SPR.check()}</div>
-      ${SPR[g.flower]()}
+  grid.innerHTML = GAME_META.map((g,i)=>{
+    const wide = (i===0||i===3);
+    const body = wide
+      ? `${SPR[g.flower]()}
+      <div><div class="gname">${g.name}</div>
+      <div class="gdesc">${g.desc}</div></div>`
+      : `${SPR[g.flower]()}
       <div class="gname">${g.name}</div>
-      <div class="gdesc">${g.desc}</div>
-    </div>`).join("");
+      <div class="gdesc">${g.desc}</div>`;
+    return `<div class="game-card${wide?" wide":""}${S.won[i]?" done":""}" data-game="${i}">
+      <div class="badge">${SPR.check()}</div>
+      ${body}
+    </div>`;
+  }).join("");
   grid.querySelectorAll(".game-card").forEach(c=>{
     c.addEventListener("click", ()=> startGame(+c.dataset.game));
   });
@@ -79,9 +86,9 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
 (function(){
   const b = document.createElement("div");
   b.className = "butterfly"; b.style.cssText = "top:12%; left:8%; width:44px";
-  b.innerHTML = SPR.butterfly();
+  b.innerHTML = SPR.butterflyFly();
   const b2 = b.cloneNode(true); b2.style.cssText = "top:22%; right:10%; width:36px; animation-delay:1.2s";
-  b2.innerHTML = SPR.bee();
+  b2.innerHTML = SPR.beeFly();
   document.getElementById("screen-cover").append(b, b2);
   // cánh hoa rơi trang trí cover
   const cov = document.getElementById("screen-cover");
@@ -98,12 +105,11 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
 // sparkles + mây trang trí phong cách Kawaii Pastel Pop
 (function decorate(){
   const cov = document.getElementById("screen-cover");
-  const sc = ["#FFF9C4","#B3E5FC","#B9F6CA","#FFD1DC"];
   [[8,14,0],[86,10,1.1],[12,72,2],[90,66,.6],[50,6,1.6]].forEach(([l,t,d],i)=>{
     const sp = document.createElement("div");
     sp.className = "sparkle";
     sp.style.cssText = `left:${l}%; top:${t}%; width:${22+i*4}px; animation-delay:${d}s;`;
-    sp.innerHTML = SPR.sparkle(sc[i%4]);
+    sp.innerHTML = SPR.sparkle();
     cov.appendChild(sp);
   });
   [[-30,4,120,36],[330,60,150,44]].forEach(([l,t,w,hh])=>{

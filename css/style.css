@@ -40,6 +40,8 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .cloud::before{width:55%; height:130%; left:12%; top:-70%}
 .cloud::after{width:38%; height:90%; right:14%; top:-45%}
 
+/* z-index contract (DS): base 0 / content 2 / overlay link 5 / modal 300 */
+.screen{z-index:0}
 /* ---------- Header + progress ---------- */
 .topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; position:relative; z-index:2}
 .topbar .title{font-size:1.25rem; font-weight:700; color:var(--ink)}
@@ -51,7 +53,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .fslot{width:56px;height:56px;border-radius:50%; background:#fff; border:2px dashed var(--accent-soft);
   display:flex;align-items:center;justify-content:center; transition:all .25s ease-out}
 .fslot.won{border:2px solid var(--accent); box-shadow:var(--shadow-lift); animation:pop .45s ease}
-.fslot svg{width:40px;height:40px; filter:grayscale(1); opacity:.35}
+.fslot svg,.fslot img{width:40px;height:40px; filter:grayscale(1); opacity:.35}
 .fslot.won svg{filter:none; opacity:1}
 
 /* ---------- Cards & buttons ---------- */
@@ -74,15 +76,16 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   padding:10px 14px; font-size:.9rem; margin-bottom:12px; line-height:1.6; position:relative; z-index:2}
 
 /* ---------- Cover ---------- */
-#screen-cover{display:none; text-align:center; padding-top:9vh; overflow:hidden}
+#screen-cover{display:none; text-align:left; padding-top:11vh; overflow:hidden}
 #screen-cover.active{display:block}
-.cover-flowers{display:flex; justify-content:center; gap:6px; margin-bottom:8px; position:relative; z-index:2}
-.cover-flowers svg{width:64px; height:64px; animation:floaty 3s ease-in-out infinite}
+.cover-flowers{display:flex; justify-content:flex-start; gap:6px; margin-bottom:8px; position:relative; z-index:2}
+.cover-flowers svg,.cover-flowers img{width:64px; height:64px; animation:floaty 3s ease-in-out infinite}
 .cover-flowers svg:nth-child(2){animation-delay:.4s}
 .cover-flowers svg:nth-child(3){animation-delay:.8s}
 .cover-title{font-size:clamp(2.5rem,5vw,4rem); font-weight:700; color:var(--ink); line-height:1.15; margin:10px 0 6px; position:relative; z-index:2}
 .cover-title .hl{color:var(--accent-deep)}
 .cover-sub{font-size:1rem; color:#555; margin-bottom:26px; line-height:1.6; position:relative; z-index:2}
+.sparkle img,.butterfly img{width:100%; display:block}
 .butterfly{position:absolute; animation:floaty 4s ease-in-out infinite; pointer-events:none; z-index:2}
 
 /* ---------- Menu ---------- */
@@ -96,10 +99,12 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .game-card:nth-child(4){animation-delay:.24s}
 .game-card:hover{box-shadow:var(--shadow-lift)}
 .game-card:active{transform:scale(.96)}
-.game-card svg{width:56px; height:56px; margin-bottom:6px}
+.game-card svg,.game-card img{width:56px; height:56px; margin-bottom:6px}
 .game-card .gname{font-weight:700; font-size:.95rem; color:var(--ink)}
 .game-card .gdesc{font-size:.78rem; color:#777; margin-top:2px}
 .game-card.done{border-color:var(--leaf-deep)}
+.game-card.wide{grid-column:1 / -1; display:flex; align-items:center; text-align:left; gap:14px; padding:14px 16px}
+.game-card.wide svg,.game-card.wide img{width:64px; height:64px; margin:0; flex-shrink:0}
 .game-card .badge{position:absolute; top:-10px; right:-6px; width:30px; height:30px;
   background:var(--leaf-deep); border-radius:50%; display:none; align-items:center;
   justify-content:center; border:2px solid #fff}
@@ -111,7 +116,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   aspect-ratio:1; display:flex; align-items:center; justify-content:center;
   cursor:pointer; transition:transform .2s ease-out, border-color .2s, box-shadow .2s; position:relative;
   box-shadow:var(--shadow)}
-.cell svg{width:78%; height:78%; pointer-events:none}
+.cell svg,.cell img{width:78%; height:78%; object-fit:contain; pointer-events:none}
 .cell.selected{border:2px solid var(--accent-deep); transform:scale(1.06);
   box-shadow:0 0 0 4px rgba(157,132,182,.25)}
 .cell.empty{background:transparent; border-style:dashed; box-shadow:none; cursor:default}
@@ -123,7 +128,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   display:flex; align-items:center; justify-content:center; border-radius:16px}
 .tile .front{background:linear-gradient(135deg,var(--accent),var(--baby))}
 .tile .back{background:#fff; transform:rotateY(180deg)}
-.tile .face svg{width:72%; height:72%}
+.tile .face svg,.tile .face img{width:72%; height:72%}
 .cell.matched{border-color:var(--leaf-deep); background:#E8F5E9; cursor:default}
 
 /* modals */
@@ -133,7 +138,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .modal-card{background:#fff; border-radius:var(--r-sm); padding:28px 22px; text-align:center;
   max-width:340px; width:100%; animation:pop .45s ease; border:1px solid rgba(157,132,182,.3);
   box-shadow:var(--shadow-lift)}
-.modal-card svg{width:90px; height:90px; margin-bottom:8px}
+.modal-card svg,.modal-card img{width:90px; height:90px; margin-bottom:8px}
 .modal-card h2{color:var(--ink); font-size:1.5rem; margin-bottom:6px}
 .modal-card p{color:#777; margin-bottom:18px; line-height:1.6}
 
@@ -145,6 +150,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 /* ---------- Finale ---------- */
 #screen-finale{text-align:center; overflow:hidden}
 #fireworks{position:absolute; inset:0; pointer-events:none; z-index:1}
+.finale-vase img{width:180px; max-width:60%; display:block; margin:0 auto}
 .finale-vase{margin:10px auto 6px; animation:floaty 4s ease-in-out infinite; position:relative; z-index:2}
 .card-letter{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
   padding:26px 20px; margin-top:14px; box-shadow:var(--shadow-lift); position:relative; z-index:2}
