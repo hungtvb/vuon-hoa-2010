@@ -118,15 +118,5 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
     cl.style.cssText = `left:${l}%; top:${t}%; width:${w}px; height:${hh}px;`;
     cov.appendChild(cl);
   });
-  // thảm hoa dưới đáy cover — dải vườn hoa so le
-  const bed = document.createElement("div");
-  bed.className = "flower-bed";
-  ["bloom2","tulip","bud","daisy","bloom1","rose","leaf","tulip","bloom2","bud","daisy","leaf"].forEach((n,i)=>{
-    const d = document.createElement("div");
-    const s = 34 + (i%3)*10 + (i%2)*6;
-    d.style.cssText = `width:${s}px; flex-shrink:0; transform:rotate(${(i%2?-1:1)*(i*7%12)}deg); margin-bottom:${(i%3)*9}px;`;
-    d.innerHTML = SPR[n]();
-    bed.appendChild(d);
-  });
-  cov.appendChild(bed);
+
 })();

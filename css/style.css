@@ -77,9 +77,9 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   padding:10px 14px; font-size:.9rem; margin-bottom:12px; line-height:1.6; position:relative; z-index:2}
 
 /* ---------- Cover ---------- */
-#screen-cover{display:none; text-align:left; padding-top:11vh; overflow:hidden}
-#screen-cover.active{display:block}
-.cover-flowers{display:flex; justify-content:flex-start; gap:6px; margin-bottom:8px; position:relative; z-index:2}
+#screen-cover{display:none; text-align:center; overflow:hidden}
+#screen-cover.active{display:flex; flex-direction:column; justify-content:center; align-items:center}
+.cover-flowers{display:flex; justify-content:center; gap:6px; width:100%; margin-bottom:8px; position:relative; z-index:2}
 .cover-flowers svg,.cover-flowers img{width:64px; height:64px; animation:floaty 3s ease-in-out infinite}
 .cover-flowers svg:nth-child(2){animation-delay:.4s}
 .cover-flowers svg:nth-child(3){animation-delay:.8s}
@@ -88,10 +88,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .cover-title .hl{color:var(--accent-deep)}
 .cover-sub{font-size:1rem; color:#555; margin-bottom:34px; line-height:1.6; position:relative; z-index:2}
 .sparkle img,.butterfly img{width:100%; display:block}
-.flower-bed{position:absolute; left:0; right:0; bottom:0; display:flex; align-items:flex-end;
-  justify-content:space-around; padding:0 6px 4px; pointer-events:none; z-index:1}
-.flower-bed img{width:100%; display:block; filter:drop-shadow(0 2px 4px rgba(0,0,0,.08))}
-#screen-cover #btnStart{margin-bottom:104px}
+
 .butterfly{position:absolute; animation:floaty 4s ease-in-out infinite; pointer-events:none; z-index:2}
 
 /* ---------- Menu ---------- */
