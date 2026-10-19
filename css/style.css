@@ -1,85 +1,104 @@
+/* Kawaii Pastel Pop — design tokens */
 :root{
-  --pink:#F06292; --pink-deep:#EC407A; --peach:#FF9E6D; --sun:#FFD54F;
-  --leaf:#81C784; --leaf-deep:#4E9A51; --cream:#FFF8F0; --card:#FFFFFF;
-  --ink:#5D4037; --ink-soft:#A1887F; --danger:#E53935; --line:#F8BBD0;
-  --shadow:0 6px 20px rgba(236,64,122,.14);
-  --r-lg:20px; --r-md:16px; --r-pill:999px;
+  --pink:#FFD1DC; --ink:#222222; --accent:#9D84B6; --baby:#B3E5FC;
+  --cream:#FFF9C4; --mint:#B9F6CA;
+  --accent-soft:#D1C4E9; --accent-deep:#7E57C2;
+  --pink-deep:#F48FB1; --peach:#FFCBA4; --sun:#FFE082;
+  --leaf:#A5D6A7; --leaf-deep:#81C784;
+  --card:#FFFFFF; --danger:#E57399;
+  --shadow:0 2px 12px rgba(0,0,0,.06);
+  --shadow-lift:0 6px 18px rgba(157,132,182,.25);
+  --r-sm:20px; --r-md:40px; --r-lg:60px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
 body{
-  font-family:'Quicksand',sans-serif; color:var(--ink); background:#FCE4EC;
+  font-family:'Varela Round',sans-serif; color:var(--ink); background:var(--pink);
   display:flex; justify-content:center; min-height:100dvh; overflow-x:hidden;
-  user-select:none; -webkit-user-select:none;
+  user-select:none; -webkit-user-select:none; font-size:16px; line-height:1.6;
 }
-h1,h2,h3,.font-head{font-family:'Baloo 2',cursive}
-.phone{width:100%; max-width:480px; min-height:100dvh; background:var(--cream);
-  position:relative; overflow:hidden; box-shadow:0 0 40px rgba(236,64,122,.15)}
+h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; letter-spacing:-.01em}
+.phone{width:100%; max-width:480px; min-height:100dvh; background:var(--pink);
+  position:relative; overflow:hidden}
 .screen{display:none; min-height:100dvh; padding:20px 18px 32px; position:relative;
-  animation:fadeSlide .35s ease}
+  animation:entry .42s ease-out}
 .screen.active{display:block}
-@keyframes fadeSlide{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
-@keyframes pop{0%{transform:scale(.4)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes entry{from{opacity:0; transform:translateY(16px)}to{opacity:1; transform:none}}
+@keyframes pop{0%{transform:scale(.4)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes floaty{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
 @keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 @keyframes petalFall{0%{transform:translateY(-20px) rotate(0); opacity:0}
   10%{opacity:1}100%{transform:translateY(110vh) rotate(340deg); opacity:0}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes twinkle{0%,100%{opacity:.35; transform:scale(.8) rotate(0)}50%{opacity:1; transform:scale(1.15) rotate(20deg)}}
 .shake{animation:shake .3s ease}
 
+/* ---------- Sparkles & clouds ---------- */
+.sparkle{position:absolute; pointer-events:none; animation:twinkle 2.6s ease-in-out infinite; z-index:1}
+.cloud{position:absolute; background:#fff; opacity:.75; border-radius:999px; pointer-events:none; z-index:0}
+.cloud::before,.cloud::after{content:""; position:absolute; background:#fff; border-radius:50%}
+.cloud::before{width:55%; height:130%; left:12%; top:-70%}
+.cloud::after{width:38%; height:90%; right:14%; top:-45%}
+
 /* ---------- Header + progress ---------- */
-.topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
-.topbar .title{font-size:20px; font-weight:800; color:var(--pink-deep)}
-.icon-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);
+.topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; position:relative; z-index:2}
+.topbar .title{font-size:1.25rem; font-weight:700; color:var(--ink)}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent-soft);
   background:#fff; display:flex;align-items:center;justify-content:center; cursor:pointer;
-  box-shadow:var(--shadow); transition:transform .15s}
-.icon-btn:active{transform:scale(.9)}
-.flower-progress{display:flex; gap:10px; justify-content:center; margin:6px 0 18px}
-.fslot{width:56px;height:56px;border-radius:50%; background:#fff; border:2px dashed var(--line);
-  display:flex;align-items:center;justify-content:center; transition:all .3s}
-.fslot.won{border:2px solid var(--pink); border-style:solid; box-shadow:var(--shadow); animation:pop .45s ease}
+  box-shadow:var(--shadow); transition:transform .2s ease-out, box-shadow .2s}
+.icon-btn:active{transform:scale(.92)}
+.flower-progress{display:flex; gap:10px; justify-content:center; margin:6px 0 18px; position:relative; z-index:2}
+.fslot{width:56px;height:56px;border-radius:50%; background:#fff; border:2px dashed var(--accent-soft);
+  display:flex;align-items:center;justify-content:center; transition:all .25s ease-out}
+.fslot.won{border:2px solid var(--accent); box-shadow:var(--shadow-lift); animation:pop .45s ease}
 .fslot svg{width:40px;height:40px; filter:grayscale(1); opacity:.35}
 .fslot.won svg{filter:none; opacity:1}
 
 /* ---------- Cards & buttons ---------- */
-.card{background:var(--card); border:2px solid var(--line); border-radius:var(--r-lg);
+.card{background:var(--cream); border:1px solid rgba(157,132,182,.25); border-radius:var(--r-sm);
   padding:18px; box-shadow:var(--shadow)}
-.btn{display:block; width:100%; border:none; cursor:pointer; font-family:'Baloo 2',cursive;
-  font-weight:700; font-size:18px; color:#fff; padding:14px 20px; border-radius:var(--r-pill);
-  background:linear-gradient(135deg,var(--pink),var(--peach));
-  box-shadow:0 6px 16px rgba(236,64,122,.35); transition:transform .15s}
-.btn:active{transform:scale(.96)}
-.btn.secondary{background:#fff; color:var(--pink-deep); border:2px solid var(--pink);
+.btn{display:block; width:100%; border:none; cursor:pointer; font-family:'Varela Round',sans-serif;
+  font-weight:600; font-size:1.05rem; color:#fff; padding:12px 20px; border-radius:var(--r-sm);
+  background:var(--accent); box-shadow:var(--shadow); transition:all .2s ease-out}
+.btn:hover{filter:brightness(.92); box-shadow:var(--shadow-lift)}
+.btn:active{transform:translateY(-1px)}
+.btn.secondary{background:#fff; color:var(--accent-deep); border:1.5px solid var(--accent-soft);
   box-shadow:var(--shadow)}
 .btn:disabled{opacity:.5}
-.hud{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap}
-.chip{background:#fff; border:2px solid var(--line); border-radius:var(--r-pill);
-  padding:6px 14px; font-weight:700; font-size:14px; display:flex; align-items:center; gap:6px}
-.chip b{color:var(--pink-deep)}
-.hint{background:#FFF3E0; border:2px dashed var(--peach); border-radius:var(--r-md);
-  padding:10px 14px; font-size:14px; margin-bottom:12px; line-height:1.5}
+.hud{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; position:relative; z-index:2}
+.chip{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
+  padding:6px 14px; font-weight:500; font-size:.875rem; display:flex; align-items:center; gap:6px;
+  box-shadow:var(--shadow)}
+.chip b{color:var(--accent-deep); font-weight:700}
+.hint{background:var(--cream); border:1.5px dashed var(--accent-soft); border-radius:var(--r-sm);
+  padding:10px 14px; font-size:.9rem; margin-bottom:12px; line-height:1.6; position:relative; z-index:2}
 
 /* ---------- Cover ---------- */
-#screen-cover{display:none; text-align:center; padding-top:8vh;
-  background:linear-gradient(180deg,#FCE4EC 0%,var(--cream) 70%)}
+#screen-cover{display:none; text-align:center; padding-top:9vh; overflow:hidden}
 #screen-cover.active{display:block}
-.cover-flowers{display:flex; justify-content:center; gap:6px; margin-bottom:8px}
+.cover-flowers{display:flex; justify-content:center; gap:6px; margin-bottom:8px; position:relative; z-index:2}
 .cover-flowers svg{width:64px; height:64px; animation:floaty 3s ease-in-out infinite}
 .cover-flowers svg:nth-child(2){animation-delay:.4s}
 .cover-flowers svg:nth-child(3){animation-delay:.8s}
-.cover-title{font-size:40px; font-weight:800; color:var(--pink-deep); line-height:1.15; margin:10px 0 6px}
-.cover-sub{font-size:16px; color:var(--ink-soft); margin-bottom:26px; line-height:1.6}
-.butterfly{position:absolute; animation:floaty 4s ease-in-out infinite; pointer-events:none}
+.cover-title{font-size:clamp(2.5rem,5vw,4rem); font-weight:700; color:var(--ink); line-height:1.15; margin:10px 0 6px; position:relative; z-index:2}
+.cover-title .hl{color:var(--accent-deep)}
+.cover-sub{font-size:1rem; color:#555; margin-bottom:26px; line-height:1.6; position:relative; z-index:2}
+.butterfly{position:absolute; animation:floaty 4s ease-in-out infinite; pointer-events:none; z-index:2}
 
 /* ---------- Menu ---------- */
-.menu-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-.game-card{background:#fff; border:2px solid var(--line); border-radius:var(--r-lg);
+.menu-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; position:relative; z-index:2}
+.game-card{background:#fff; border:1px solid rgba(157,132,182,.25); border-radius:var(--r-sm);
   padding:16px 10px; text-align:center; cursor:pointer; box-shadow:var(--shadow);
-  transition:transform .15s; position:relative}
-.game-card:active{transform:scale(.95)}
+  transition:all .2s ease-out; position:relative;
+  animation:entry .42s ease-out backwards}
+.game-card:nth-child(2){animation-delay:.08s}
+.game-card:nth-child(3){animation-delay:.16s}
+.game-card:nth-child(4){animation-delay:.24s}
+.game-card:hover{box-shadow:var(--shadow-lift)}
+.game-card:active{transform:scale(.96)}
 .game-card svg{width:56px; height:56px; margin-bottom:6px}
-.game-card .gname{font-family:'Baloo 2',cursive; font-weight:700; font-size:15px; color:var(--ink)}
-.game-card .gdesc{font-size:12px; color:var(--ink-soft); margin-top:2px}
+.game-card .gname{font-weight:700; font-size:.95rem; color:var(--ink)}
+.game-card .gdesc{font-size:.78rem; color:#777; margin-top:2px}
 .game-card.done{border-color:var(--leaf-deep)}
 .game-card .badge{position:absolute; top:-10px; right:-6px; width:30px; height:30px;
   background:var(--leaf-deep); border-radius:50%; display:none; align-items:center;
@@ -87,49 +106,52 @@ h1,h2,h3,.font-head{font-family:'Baloo 2',cursive}
 .game-card.done .badge{display:flex}
 
 /* ---------- Game boards ---------- */
-.board{display:grid; gap:8px; justify-content:center; margin:0 auto}
-.cell{background:#fff; border:2px solid var(--line); border-radius:var(--r-md);
+.board{display:grid; gap:8px; justify-content:center; margin:0 auto; position:relative; z-index:2}
+.cell{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
   aspect-ratio:1; display:flex; align-items:center; justify-content:center;
-  cursor:pointer; transition:transform .15s, border-color .15s; position:relative;
-  box-shadow:0 2px 8px rgba(236,64,122,.08)}
+  cursor:pointer; transition:transform .2s ease-out, border-color .2s, box-shadow .2s; position:relative;
+  box-shadow:var(--shadow)}
 .cell svg{width:78%; height:78%; pointer-events:none}
-.cell.selected{border-color:var(--sun); border-width:3px; transform:scale(1.08);
-  box-shadow:0 0 0 4px rgba(255,213,79,.35)}
+.cell.selected{border:2px solid var(--accent-deep); transform:scale(1.06);
+  box-shadow:0 0 0 4px rgba(157,132,182,.25)}
 .cell.empty{background:transparent; border-style:dashed; box-shadow:none; cursor:default}
 .cell.clearing{animation:pop .4s ease}
 .cell .back{position:absolute; inset:0; display:flex; align-items:center; justify-content:center}
 .tile{width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform .4s}
 .tile.flipped{transform:rotateY(180deg)}
 .tile .face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
-  display:flex; align-items:center; justify-content:center; border-radius:12px}
-.tile .front{background:linear-gradient(135deg,var(--pink),var(--peach))}
+  display:flex; align-items:center; justify-content:center; border-radius:16px}
+.tile .front{background:linear-gradient(135deg,var(--accent),var(--baby))}
 .tile .back{background:#fff; transform:rotateY(180deg)}
 .tile .face svg{width:72%; height:72%}
-.cell.matched{border-color:var(--leaf-deep); background:#F1F8E9; cursor:default}
+.cell.matched{border-color:var(--leaf-deep); background:#E8F5E9; cursor:default}
 
-/* win modal */
-.modal{position:absolute; inset:0; background:rgba(93,64,55,.45); display:none;
-  align-items:center; justify-content:center; z-index:50; padding:24px}
+/* modals */
+.modal{position:absolute; inset:0; background:rgba(34,34,34,.4); display:none;
+  align-items:center; justify-content:center; z-index:300; padding:24px}
 .modal.show{display:flex}
-.modal-card{background:#fff; border-radius:24px; padding:28px 22px; text-align:center;
-  max-width:340px; width:100%; animation:pop .45s ease; border:3px solid var(--pink)}
+.modal-card{background:#fff; border-radius:var(--r-sm); padding:28px 22px; text-align:center;
+  max-width:340px; width:100%; animation:pop .45s ease; border:1px solid rgba(157,132,182,.3);
+  box-shadow:var(--shadow-lift)}
 .modal-card svg{width:90px; height:90px; margin-bottom:8px}
-.modal-card h2{color:var(--pink-deep); font-size:26px; margin-bottom:6px}
-.modal-card p{color:var(--ink-soft); margin-bottom:18px; line-height:1.6}
+.modal-card h2{color:var(--ink); font-size:1.5rem; margin-bottom:6px}
+.modal-card p{color:#777; margin-bottom:18px; line-height:1.6}
 
 /* ---------- Catch game ---------- */
-#catchCanvas{width:100%; border-radius:var(--r-lg); border:2px solid var(--line);
-  background:linear-gradient(180deg,#E1F5FE 0%,#FFF8F0 100%); touch-action:none; display:block}
+#catchCanvas{width:100%; border-radius:var(--r-sm); border:1px solid rgba(157,132,182,.3);
+  background:linear-gradient(180deg,var(--baby) 0%,var(--pink) 100%); touch-action:none; display:block;
+  position:relative; z-index:2; box-shadow:var(--shadow)}
 
 /* ---------- Finale ---------- */
-#screen-finale{text-align:center; background:linear-gradient(180deg,#FCE4EC,#FFF8F0); overflow:hidden}
-#fireworks{position:absolute; inset:0; pointer-events:none}
-.finale-vase{margin:10px auto 6px; animation:floaty 4s ease-in-out infinite}
-.card-letter{background:#fff; border:3px solid var(--pink); border-radius:24px;
-  padding:26px 20px; margin-top:14px; box-shadow:var(--shadow); position:relative; z-index:2}
-.card-letter h2{color:var(--pink-deep); font-size:24px; margin-bottom:4px}
-.card-letter .to{font-family:'Baloo 2',cursive; font-size:19px; color:var(--peach); margin-bottom:12px}
-.card-letter p{line-height:1.8; font-size:15.5px; margin-bottom:10px}
-.card-letter .sign{font-family:'Baloo 2',cursive; font-weight:700; color:var(--pink-deep); margin-top:14px}
+#screen-finale{text-align:center; overflow:hidden}
+#fireworks{position:absolute; inset:0; pointer-events:none; z-index:1}
+.finale-vase{margin:10px auto 6px; animation:floaty 4s ease-in-out infinite; position:relative; z-index:2}
+.card-letter{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
+  padding:26px 20px; margin-top:14px; box-shadow:var(--shadow-lift); position:relative; z-index:2}
+.card-letter h2{color:var(--ink); font-size:1.5rem; margin-bottom:4px}
+.card-letter h2 .hl{color:var(--accent-deep)}
+.card-letter .to{font-size:1.1rem; font-weight:700; color:var(--accent-deep); margin-bottom:12px}
+.card-letter p{line-height:1.8; font-size:.95rem; margin-bottom:10px; color:#444}
+.card-letter .sign{font-weight:700; color:var(--accent-deep); margin-top:14px}
 .petal{position:absolute; top:-30px; pointer-events:none; animation:petalFall linear infinite; z-index:1}
 #linkPath{position:absolute; left:0; top:0; pointer-events:none; z-index:5; overflow:visible}

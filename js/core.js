@@ -85,7 +85,7 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
   document.getElementById("screen-cover").append(b, b2);
   // cánh hoa rơi trang trí cover
   const cov = document.getElementById("screen-cover");
-  const pcols = ["#F06292","#FF9E6D","#FFD54F","#F8BBD0"];
+  const pcols = ["#FF9EBB","#FFCBA4","#FFE082","#FFD1DC"];
   for(let i=0;i<10;i++){
     const p = document.createElement("div");
     p.className = "petal";
@@ -93,4 +93,23 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
     p.style.cssText = `left:${Math.random()*100}%; width:${s}px; height:${s}px; border-radius:60% 0; background:${pcols[i%4]}; animation-duration:${6+Math.random()*6}s; animation-delay:${Math.random()*6}s;`;
     cov.appendChild(p);
   }
+})();
+
+// sparkles + mây trang trí phong cách Kawaii Pastel Pop
+(function decorate(){
+  const cov = document.getElementById("screen-cover");
+  const sc = ["#FFF9C4","#B3E5FC","#B9F6CA","#FFD1DC"];
+  [[8,14,0],[86,10,1.1],[12,72,2],[90,66,.6],[50,6,1.6]].forEach(([l,t,d],i)=>{
+    const sp = document.createElement("div");
+    sp.className = "sparkle";
+    sp.style.cssText = `left:${l}%; top:${t}%; width:${22+i*4}px; animation-delay:${d}s;`;
+    sp.innerHTML = SPR.sparkle(sc[i%4]);
+    cov.appendChild(sp);
+  });
+  [[-30,4,120,36],[330,60,150,44]].forEach(([l,t,w,hh])=>{
+    const cl = document.createElement("div");
+    cl.className = "cloud";
+    cl.style.cssText = `left:${l}px; top:${t}px; width:${w}px; height:${hh}px;`;
+    cov.appendChild(cl);
+  });
 })();

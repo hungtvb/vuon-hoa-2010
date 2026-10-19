@@ -115,7 +115,7 @@ function g2Link(a, b, path){
   svg.style.left = -padX+"px"; svg.style.top = -padY+"px";
   svg.style.width = (bw+padX*2)+"px"; svg.style.height = (bh+padY*2)+"px";
   const pts = path.map(p=>`${((p.c-0.5)*cw).toFixed(1)},${((p.r-0.5)*ch).toFixed(1)}`).join(" ");
-  svg.innerHTML = `<polyline points="${pts}" fill="none" stroke="#FFD54F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
+  svg.innerHTML = `<polyline points="${pts}" fill="none" stroke="#FFE082" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
   setTimeout(()=>{
     svg.innerHTML = "";
     g2.grid[a.r][a.c] = null; g2.grid[b.r][b.c] = null;

@@ -7,7 +7,7 @@ function openFinale(){
   // petals falling
   const fin = document.getElementById("screen-finale");
   fin.querySelectorAll(".petal").forEach(p=>p.remove());
-  const colors = ["#F06292","#FF9E6D","#FFD54F","#F8BBD0","#EC407A"];
+  const colors = ["#FF9EBB","#FFCBA4","#FFE082","#FFD1DC","#F48FB1"];
   for(let i=0;i<26;i++){
     const p = document.createElement("div");
     p.className = "petal";
@@ -24,7 +24,7 @@ function startFireworks(){
   const ctx = cv.getContext("2d");
   if(fw && fw.raf) cancelAnimationFrame(fw.raf);
   fw = { parts:[], raf:0, last:0 };
-  const colors = ["#F06292","#FFD54F","#FF9E6D","#AB47BC","#29B6F6"];
+  const colors = ["#FF9EBB","#FFE082","#FFCBA4","#CE93D8","#81D4FA"];
   const loop = t=>{
     if(!document.getElementById("screen-finale").classList.contains("active")) return;
     ctx.clearRect(0,0,cv.width,cv.height);

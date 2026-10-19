@@ -66,7 +66,7 @@ function burstPetals(cell){
   const r = cell.getBoundingClientRect();
   for(let i=0;i<8;i++){
     const p = document.createElement("div");
-    const colors = ["#F06292","#FF9E6D","#FFD54F","#EC407A"];
+    const colors = ["#FF9EBB","#FFCBA4","#FFE082","#F48FB1"];
     p.style.cssText = `position:fixed; left:${r.left+r.width/2}px; top:${r.top+r.height/2}px; width:10px; height:10px; border-radius:50% 0; background:${colors[i%4]}; z-index:99; pointer-events:none; transition:all .7s ease-out;`;
     document.body.appendChild(p);
     const ang = Math.PI*2*i/8;

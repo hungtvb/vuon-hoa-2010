@@ -59,7 +59,7 @@ function drawG4(){
       ctx.fillStyle = "#A68B1F"; ctx.strokeStyle = INK; ctx.lineWidth = 2.5;
       ctx.beginPath(); ctx.ellipse(0,0,13,8,0,0,6.29); ctx.fill(); ctx.stroke();
     } else {
-      const c = it.type==="rose" ? "#F06292" : "#FFD54F";
+      const c = it.type==="rose" ? "#FF9EBB" : "#FFE082";
       for(let i=0;i<5;i++){
         ctx.save(); ctx.rotate(i*6.28/5);
         ctx.fillStyle = c; ctx.strokeStyle = INK; ctx.lineWidth = 2;
