@@ -1,13 +1,13 @@
 /* Kawaii Pastel Pop — design tokens */
 :root{
-  --pink:#FFD1DC; --ink:#222222; --accent:#9D84B6; --baby:#B3E5FC;
+  --pink:#FFD6E0; --ink:#222222; --accent:#D94F7A; --baby:#B3E5FC;
   --cream:#FFF9C4; --mint:#B9F6CA;
-  --accent-soft:#D1C4E9; --accent-deep:#7E57C2;
+  --accent-soft:#F7B8CC; --accent-deep:#9C1C4C;
   --pink-deep:#F48FB1; --peach:#FFCBA4; --sun:#FFE082;
   --leaf:#A5D6A7; --leaf-deep:#81C784;
   --card:#FFFFFF; --danger:#E57399;
   --shadow:0 2px 12px rgba(0,0,0,.06);
-  --shadow-lift:0 6px 18px rgba(157,132,182,.25);
+  --shadow-lift:0 6px 18px rgba(217,79,122,.25);
   --r-sm:20px; --r-md:40px; --r-lg:60px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -58,7 +58,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .fslot.won svg,.fslot.won img{filter:none; opacity:1}
 
 /* ---------- Cards & buttons ---------- */
-.card{background:var(--cream); border:1px solid rgba(157,132,182,.25); border-radius:var(--r-sm);
+.card{background:var(--cream); border:1px solid rgba(217,79,122,.25); border-radius:var(--r-sm);
   padding:18px; box-shadow:var(--shadow)}
 .btn{display:block; width:100%; border:none; cursor:pointer; font-family:'Varela Round',sans-serif;
   font-weight:600; font-size:1.05rem; color:#fff; padding:12px 20px; border-radius:var(--r-sm);
@@ -71,7 +71,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 #btnStart{font-size:1.15rem; padding:14px 20px; border:2px solid rgba(255,255,255,.85);
   box-shadow:0 8px 24px rgba(126,87,194,.45), 0 2px 12px rgba(0,0,0,.06)}
 .hud{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; position:relative; z-index:2}
-.chip{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
+.chip{background:#fff; border:1px solid rgba(217,79,122,.3); border-radius:var(--r-sm);
   padding:6px 14px; font-weight:500; font-size:.875rem; display:flex; align-items:center; gap:6px;
   box-shadow:var(--shadow)}
 .chip b{color:var(--accent-deep); font-weight:700}
@@ -95,7 +95,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 
 /* ---------- Menu ---------- */
 .menu-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; position:relative; z-index:2}
-.game-card{background:#fff; border:1px solid rgba(157,132,182,.25); border-radius:var(--r-sm);
+.game-card{background:#fff; border:1px solid rgba(217,79,122,.25); border-radius:var(--r-sm);
   padding:16px 10px; text-align:center; cursor:pointer; box-shadow:var(--shadow);
   transition:all .2s ease-out; position:relative;
   animation:entry .42s ease-out backwards}
@@ -127,13 +127,13 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   #screen-g1 .topbar{margin-bottom:6px}
   #screen-g1{padding-top:14px}
 }
-.cell{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
+.cell{background:#fff; border:1px solid rgba(217,79,122,.3); border-radius:var(--r-sm);
   aspect-ratio:1; display:flex; align-items:center; justify-content:center;
   cursor:pointer; transition:transform .2s ease-out, border-color .2s, box-shadow .2s; position:relative;
   box-shadow:var(--shadow)}
 .cell svg,.cell img{width:78%; height:78%; object-fit:contain; pointer-events:none}
 .cell.selected{border:2px solid var(--accent-deep); transform:scale(1.06);
-  box-shadow:0 0 0 4px rgba(157,132,182,.25)}
+  box-shadow:0 0 0 4px rgba(217,79,122,.25)}
 .cell.empty{background:transparent; border-style:dashed; box-shadow:none; cursor:default}
 .cell.clearing{animation:pop .4s ease}
 .cell .back{position:absolute; inset:0; display:flex; align-items:center; justify-content:center}
@@ -151,14 +151,14 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
   align-items:center; justify-content:center; z-index:300; padding:24px}
 .modal.show{display:flex}
 .modal-card{background:#fff; border-radius:var(--r-sm); padding:28px 22px; text-align:center;
-  max-width:340px; width:100%; animation:pop .45s ease; border:1px solid rgba(157,132,182,.3);
+  max-width:340px; width:100%; animation:pop .45s ease; border:1px solid rgba(217,79,122,.3);
   box-shadow:var(--shadow-lift)}
 .modal-card svg,.modal-card img{width:90px; height:90px; margin-bottom:8px}
 .modal-card h2{color:var(--ink); font-size:1.5rem; margin-bottom:6px}
 .modal-card p{color:#777; margin-bottom:18px; line-height:1.6}
 
 /* ---------- Catch game ---------- */
-#catchCanvas{width:100%; border-radius:var(--r-sm); border:1px solid rgba(157,132,182,.3);
+#catchCanvas{width:100%; border-radius:var(--r-sm); border:1px solid rgba(217,79,122,.3);
   background:linear-gradient(180deg,var(--baby) 0%,var(--pink) 100%); touch-action:none; display:block;
   position:relative; z-index:2; box-shadow:var(--shadow)}
 
@@ -167,7 +167,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 #fireworks{position:absolute; inset:0; pointer-events:none; z-index:1}
 .finale-vase img{width:180px; max-width:60%; display:block; margin:0 auto}
 .finale-vase{margin:10px auto 6px; animation:floaty 4s ease-in-out infinite; position:relative; z-index:2}
-.card-letter{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
+.card-letter{background:#fff; border:1px solid rgba(217,79,122,.3); border-radius:var(--r-sm);
   padding:26px 20px; margin-top:14px; box-shadow:var(--shadow-lift); position:relative; z-index:2}
 .card-letter h2{color:var(--ink); font-size:1.5rem; margin-bottom:4px}
 .card-letter h2 .hl{color:var(--accent-deep)}
@@ -179,7 +179,7 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 
 /* ---------- Nút nhạc nền ---------- */
 .music-btn{position:absolute; top:12px; right:12px; z-index:150; width:44px; height:44px;
-  border-radius:50%; background:#FFF9C4; border:1px solid rgba(157,132,182,.35);
+  border-radius:50%; background:#FFF9C4; border:1px solid rgba(217,79,122,.35);
   box-shadow:var(--shadow); cursor:pointer; display:flex; align-items:center; justify-content:center}
 .music-btn svg{width:24px; height:24px}
 .music-btn:active{transform:scale(.92)}

@@ -106,7 +106,7 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
   document.getElementById("screen-cover").append(b, b2);
   // cánh hoa rơi trang trí cover
   const cov = document.getElementById("screen-cover");
-  const pcols = ["#FF9EBB","#FFCBA4","#FFE082","#FFD1DC"];
+  const pcols = ["#D94F7A","#F06292","#F8BBD0","#9C1C4C"];
   for(let i=0;i<10;i++){
     const p = document.createElement("div");
     p.className = "petal";

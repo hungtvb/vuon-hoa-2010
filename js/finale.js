@@ -7,7 +7,7 @@ function openFinale(){
   // petals falling
   const fin = document.getElementById("screen-finale");
   fin.querySelectorAll(".petal").forEach(p=>p.remove());
-  const colors = ["#FF9EBB","#FFCBA4","#FFE082","#FFD1DC","#F48FB1"];
+  const colors = ["#D94F7A","#F06292","#F8BBD0","#9C1C4C","#FFD6E0"];
   for(let i=0;i<26;i++){
     const p = document.createElement("div");
     p.className = "petal";
