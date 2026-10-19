@@ -176,14 +176,3 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .card-letter .sign{font-weight:700; color:var(--accent-deep); margin-top:14px}
 .petal{position:absolute; top:-30px; pointer-events:none; animation:petalFall linear infinite; z-index:1}
 #linkPath{position:absolute; left:0; top:0; pointer-events:none; z-index:5; overflow:visible}
-
-/* ---------- Loader: đợi sprite load xong ---------- */
-#loader{position:absolute; inset:0; z-index:500; background:var(--pink);
-  display:flex; align-items:center; justify-content:center}
-.load-box{text-align:center; width:70%; max-width:300px}
-.load-title{font-size:1.5rem; font-weight:700; color:var(--ink); margin-bottom:18px}
-.load-track{height:14px; background:#fff; border-radius:999px; overflow:hidden;
-  border:1px solid rgba(157,132,182,.3); box-shadow:var(--shadow)}
-.load-bar{height:100%; width:0; border-radius:999px;
-  background:linear-gradient(90deg,var(--accent),var(--baby)); transition:width .2s ease-out}
-.load-pct{margin-top:10px; color:var(--accent-deep); font-weight:700}

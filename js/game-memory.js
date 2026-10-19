@@ -1,10 +1,7 @@
 /* ================= GAME 3: TRÍ NHỚ ================= */
 let g3 = null;
 function initG3(){
-  /* TẠM DEBUG */
-  try{ document.title = "DBG initG3 go"; }catch(e){}
   const board = document.getElementById("g3Board");
-  try{ document.title = "DBG board=" + !!board; }catch(e){}
   board.innerHTML = "";
   const icons = [];
   for(let i=0;i<8;i++){ icons.push(i,i); }
@@ -19,7 +16,6 @@ function initG3(){
     c.addEventListener("click", ()=>g3Click(idx));
     board.appendChild(c);
   });
-  try{ document.title = "DBG cells=" + board.children.length; }catch(e){}
 }
 function g3Click(idx){
   if(g3.over || g3.lock) return;
