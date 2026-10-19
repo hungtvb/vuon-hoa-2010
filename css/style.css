@@ -18,6 +18,7 @@ body{
   user-select:none; -webkit-user-select:none; font-size:16px; line-height:1.6;
 }
 h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; letter-spacing:-.01em}
+.phone img{object-fit:contain}
 .phone{width:100%; max-width:480px; min-height:100dvh; background:var(--pink);
   position:relative; overflow:hidden}
 .screen{display:none; min-height:100dvh; padding:20px 18px 32px; position:relative;

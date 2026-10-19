@@ -85,9 +85,9 @@ document.getElementById("btnReplay").addEventListener("click", ()=>{
 document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SPR.bloom1();
 (function(){
   const b = document.createElement("div");
-  b.className = "butterfly"; b.style.cssText = "top:12%; left:8%; width:44px";
+  b.className = "butterfly"; b.style.cssText = "top:6%; right:14%; width:44px";
   b.innerHTML = SPR.butterflyFly();
-  const b2 = b.cloneNode(true); b2.style.cssText = "top:22%; right:10%; width:36px; animation-delay:1.2s";
+  const b2 = b.cloneNode(true); b2.style.cssText = "top:18%; right:5%; width:34px; animation-delay:1.2s";
   b2.innerHTML = SPR.beeFly();
   document.getElementById("screen-cover").append(b, b2);
   // cánh hoa rơi trang trí cover
@@ -112,7 +112,7 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
     sp.innerHTML = SPR.sparkle();
     cov.appendChild(sp);
   });
-  [[4,3,110,34],[68,9,130,40]].forEach(([l,t,w,hh])=>{
+  [[4,3,110,34],[60,9,110,34]].forEach(([l,t,w,hh])=>{
     const cl = document.createElement("div");
     cl.className = "cloud";
     cl.style.cssText = `left:${l}%; top:${t}%; width:${w}px; height:${hh}px;`;
