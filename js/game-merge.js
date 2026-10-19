@@ -7,7 +7,7 @@ function initG1(){
   for(let i=0;i<8;i++) items.push({lv:0});
   for(let i=0;i<4;i++) items.push({wilt:true});
   for(let i=items.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [items[i],items[j]]=[items[j],items[i]]; }
-  g1 = { items, sel:null, moves:30, over:false };
+  g1 = { items, sel:null, moves:20, over:false };
   document.getElementById("g1Moves").textContent = g1.moves;
   items.forEach((it,idx)=>{
     const c = document.createElement("div");
