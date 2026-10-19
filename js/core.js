@@ -112,10 +112,21 @@ document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SP
     sp.innerHTML = SPR.sparkle();
     cov.appendChild(sp);
   });
-  [[-30,4,120,36],[330,60,150,44]].forEach(([l,t,w,hh])=>{
+  [[4,3,110,34],[68,9,130,40]].forEach(([l,t,w,hh])=>{
     const cl = document.createElement("div");
     cl.className = "cloud";
-    cl.style.cssText = `left:${l}px; top:${t}px; width:${w}px; height:${hh}px;`;
+    cl.style.cssText = `left:${l}%; top:${t}%; width:${w}px; height:${hh}px;`;
     cov.appendChild(cl);
   });
+  // thảm hoa dưới đáy cover — dải vườn hoa so le
+  const bed = document.createElement("div");
+  bed.className = "flower-bed";
+  ["bloom2","tulip","bud","daisy","bloom1","rose","leaf","tulip","bloom2","bud","daisy","leaf"].forEach((n,i)=>{
+    const d = document.createElement("div");
+    const s = 34 + (i%3)*10 + (i%2)*6;
+    d.style.cssText = `width:${s}px; flex-shrink:0; transform:rotate(${(i%2?-1:1)*(i*7%12)}deg); margin-bottom:${(i%3)*9}px;`;
+    d.innerHTML = SPR[n]();
+    bed.appendChild(d);
+  });
+  cov.appendChild(bed);
 })();
