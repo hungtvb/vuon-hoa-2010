@@ -176,3 +176,10 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .card-letter .sign{font-weight:700; color:var(--accent-deep); margin-top:14px}
 .petal{position:absolute; top:-30px; pointer-events:none; animation:petalFall linear infinite; z-index:1}
 #linkPath{position:absolute; left:0; top:0; pointer-events:none; z-index:5; overflow:visible}
+
+/* ---------- Nút nhạc nền ---------- */
+.music-btn{position:absolute; top:12px; right:12px; z-index:150; width:44px; height:44px;
+  border-radius:50%; background:#FFF9C4; border:1px solid rgba(157,132,182,.35);
+  box-shadow:var(--shadow); cursor:pointer; display:flex; align-items:center; justify-content:center}
+.music-btn svg{width:24px; height:24px}
+.music-btn:active{transform:scale(.92)}

@@ -77,7 +77,21 @@ function showWin(i, text){
 }
 document.querySelectorAll("[data-nav]").forEach(b=>
   b.addEventListener("click", ()=>{ show("screen-"+b.dataset.nav); renderMenu(); }));
-document.getElementById("btnStart").addEventListener("click", ()=>{ show("screen-menu"); renderMenu(); });
+document.getElementById("btnStart").addEventListener("click", ()=>{
+  show("screen-menu"); renderMenu();
+  const bgm = document.getElementById("bgm");
+  bgm.volume = 0.5;
+  bgm.play().catch(()=>{});
+});
+let musicOn = true;
+document.getElementById("btnMusic").addEventListener("click", (e)=>{
+  e.stopPropagation();
+  const bgm = document.getElementById("bgm");
+  musicOn = !musicOn;
+  document.getElementById("icoMusicOn").style.display = musicOn ? "" : "none";
+  document.getElementById("icoMusicOff").style.display = musicOn ? "none" : "";
+  if(musicOn){ bgm.play().catch(()=>{}); } else { bgm.pause(); }
+});
 document.getElementById("btnReplay").addEventListener("click", ()=>{
   S.won = [false,false,false,false]; show("screen-menu"); renderMenu();
 });

@@ -7,10 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=13">
+<link rel="stylesheet" href="css/style.css?v=14">
 </head>
 <body>
 <div class="phone" id="app">
+    <audio id="bgm" loop preload="auto"><source src="assets/audio/bgm.mp3?v=14" type="audio/mpeg"></audio>
+    <button id="btnMusic" class="music-btn" aria-label="Bật/tắt nhạc">
+      <svg id="icoMusicOn" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#9D84B6"/><path d="M16 9c1.2 1 1.2 5 0 6M18.5 7c2 1.6 2 8.4 0 10" stroke="#9D84B6" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+      <svg id="icoMusicOff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#B0A8B9"/><path d="M16 9l6 6M22 9l-6 6" stroke="#B0A8B9" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
 
   <!-- COVER -->
   <section class="screen" id="screen-cover">
@@ -127,13 +132,13 @@
   </div>
 
 </div>
-  <script src="js/sprites.js?v=13"></script>
-  <script src="js/core.js?v=13"></script>
-  <script src="js/game-merge.js?v=13"></script>
-  <script src="js/game-link.js?v=13"></script>
-  <script src="js/game-memory.js?v=13"></script>
-  <script src="js/game-catch.js?v=13"></script>
-  <script src="js/finale.js?v=13"></script>
-  <script src="js/main.js?v=13"></script>
+  <script src="js/sprites.js?v=14"></script>
+  <script src="js/core.js?v=14"></script>
+  <script src="js/game-merge.js?v=14"></script>
+  <script src="js/game-link.js?v=14"></script>
+  <script src="js/game-memory.js?v=14"></script>
+  <script src="js/game-catch.js?v=14"></script>
+  <script src="js/finale.js?v=14"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>
