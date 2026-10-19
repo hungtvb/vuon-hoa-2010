@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<script>
+/* TẠM DEBUG: bắt mọi lỗi JS từ đầu - SẼ GỠ */
+window.addEventListener("error",function(e){(window.__errs=window.__errs||[]).push(e.message+" @ "+(e.filename||"").split("/").pop()+":"+e.lineno);});
+window.addEventListener("DOMContentLoaded",function(){setTimeout(function(){if(window.__errs&&window.__errs.length){var d=document.createElement("div");d.id="liveErr";d.style.cssText="position:fixed;bottom:0;left:0;right:0;background:#b71c1c;color:#fff;padding:10px;z-index:9999;font-size:13px;word-break:break-all";d.textContent="LỖI JS: "+window.__errs.join(" | ");document.body.appendChild(d);}},1500);});
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vườn Hoa 20/10</title>
