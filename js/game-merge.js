@@ -7,8 +7,18 @@ function initG1(){
   for(let i=0;i<16;i++) items.push({lv:0});
   for(let i=0;i<4;i++) items.push({wilt:true});
   for(let i=items.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [items[i],items[j]]=[items[j],items[i]]; }
-  g1 = { items, sel:null, moves:36, over:false };
-  document.getElementById("g1Moves").textContent = g1.moves;
+  if(g1 && g1.timer) clearInterval(g1.timer);
+  g1 = { items, sel:null, lives:3, time:60, over:false, timer:0 };
+  paintG1Hud();
+  g1.timer = setInterval(()=>{
+    if(g1.over) return;
+    g1.time--;
+    document.getElementById("g1Time").textContent = Math.max(0, g1.time);
+    if(g1.time <= 0){
+      g1.over = true; clearInterval(g1.timer);
+      setTimeout(()=>showLose("Hết giờ rồi! Thử lại nhé?", initG1), 400);
+    }
+  }, 1000);
   items.forEach((it,idx)=>{
     const c = document.createElement("div");
     c.className = "cell"; c.dataset.idx = idx;
@@ -23,7 +33,7 @@ function g1Click(idx){
   const it = g1.items[idx];
   if(!it){ g1.sel = null; paintG1Sel(); return; }
   if(it.wilt){ // chạm lá úa: phạt
-    g1.moves--; paintG1Moves();
+    g1LoseLife();
     const c = g1Cell(idx); c.classList.add("shake"); setTimeout(()=>c.classList.remove("shake"),320);
     g1.sel = null; paintG1Sel();
     return g1CheckEnd();
@@ -42,10 +52,10 @@ function g1Click(idx){
       to.classList.remove("clearing");
       to.innerHTML = SPR[FLOWER_LEVELS[a.lv+1]]();
       burstPetals(to);
-      if(a.lv+1 === 4){ g1.over = true; setTimeout(()=>showWin(0,"Tuyệt vời! Bạn đã ghép ra Hoa 20/10 rực rỡ nhất vườn."), 650); }
+      if(a.lv+1 === 4){ g1.over = true; clearInterval(g1.timer); setTimeout(()=>showWin(0,"Tuyệt vời! Bạn đã ghép ra Hoa 20/10 rực rỡ nhất vườn."), 650); }
     }, 380);
   } else {
-    g1.moves--; paintG1Moves();
+    g1LoseLife();
     [g1Cell(g1.sel), g1Cell(idx)].forEach(c=>{ c.classList.add("shake"); setTimeout(()=>c.classList.remove("shake"),320); });
   }
   g1.sel = null; paintG1Sel();
@@ -54,14 +64,20 @@ function g1Click(idx){
 function paintG1Sel(){
   [...document.getElementById("g1Board").children].forEach((c,i)=>c.classList.toggle("selected", i===g1.sel));
 }
-function paintG1Moves(){ document.getElementById("g1Moves").textContent = Math.max(0,g1.moves); }
-function g1CheckEnd(){
+function paintG1Hud(){
+  document.getElementById("g1Moves").textContent = Math.max(0, g1.lives);
+  document.getElementById("g1Time").textContent = Math.max(0, g1.time);
+}
+function g1LoseLife(){
   if(g1.over) return;
-  if(g1.moves <= 0){
-    g1.over = true;
+  g1.lives--;
+  document.getElementById("g1Moves").textContent = Math.max(0, g1.lives);
+  if(g1.lives <= 0){
+    g1.over = true; clearInterval(g1.timer);
     setTimeout(()=>showLose("Hết lượt rồi! Thử lại nhé?", initG1), 400);
   }
 }
+function g1CheckEnd(){ /* thua xử lý ở g1LoseLife + timer */ }
 function burstPetals(cell){
   const r = cell.getBoundingClientRect();
   for(let i=0;i<8;i++){
