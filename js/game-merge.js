@@ -4,10 +4,10 @@ function initG1(){
   const board = document.getElementById("g1Board");
   board.innerHTML = "";
   const items = [];
-  for(let i=0;i<8;i++) items.push({lv:0});
+  for(let i=0;i<16;i++) items.push({lv:0});
   for(let i=0;i<4;i++) items.push({wilt:true});
   for(let i=items.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [items[i],items[j]]=[items[j],items[i]]; }
-  g1 = { items, sel:null, moves:20, over:false };
+  g1 = { items, sel:null, moves:36, over:false };
   document.getElementById("g1Moves").textContent = g1.moves;
   items.forEach((it,idx)=>{
     const c = document.createElement("div");
@@ -31,7 +31,7 @@ function g1Click(idx){
   if(g1.sel === null){ g1.sel = idx; paintG1Sel(); return; }
   if(g1.sel === idx){ g1.sel = null; paintG1Sel(); return; }
   const a = g1.items[g1.sel], b = it;
-  if(a.lv === b.lv && a.lv < 3){
+  if(a.lv === b.lv && a.lv < 4){
     // merge!
     const from = g1Cell(g1.sel), to = g1Cell(idx);
     g1.items[g1.sel] = null;
@@ -42,7 +42,7 @@ function g1Click(idx){
       to.classList.remove("clearing");
       to.innerHTML = SPR[FLOWER_LEVELS[a.lv+1]]();
       burstPetals(to);
-      if(a.lv+1 === 3){ g1.over = true; setTimeout(()=>showWin(0,"Tuyệt vời! Bạn đã ghép ra Hoa 20/10 rực rỡ nhất vườn."), 650); }
+      if(a.lv+1 === 4){ g1.over = true; setTimeout(()=>showWin(0,"Tuyệt vời! Bạn đã ghép ra Hoa 20/10 rực rỡ nhất vườn."), 650); }
     }, 380);
   } else {
     g1.moves--; paintG1Moves();

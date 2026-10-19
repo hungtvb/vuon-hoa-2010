@@ -8,6 +8,7 @@ const SPR = {
   bloom1:    ()=>sprImg("bloom1"),
   bloom2:    ()=>sprImg("bloom2"),
   bloomX:    ()=>sprImg("bloomX"),
+  bloomXX:   ()=>sprImg("bloomXX"),
   wilt:      ()=>sprImg("wilt"),
   rose:      ()=>sprImg("rose"),
   goldflower:()=>sprImg("goldflower"),
@@ -32,5 +33,5 @@ const SPR = {
   check: ()=>`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="#81C784"/><path d="M7 12.5 L10.5 16 L17 8.5" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
 };
 const PAIR_ICONS = ["rose","daisy","tulip","butterfly","bee","heart","leaf","drop","star","candy","bell","bow","sun","shroom","shell"];
-const FLOWER_LEVELS = ["bud","bloom1","bloom2","bloomX"];
-const FLOWER_NAMES = ["Nụ hoa","Chớm nở","Nở rộ","Hoa 20/10"];
+const FLOWER_LEVELS = ["bud","bloom1","bloom2","bloomX","bloomXX"];
+const FLOWER_NAMES = ["Nụ hoa","Chớm nở","Nở rộ","Rực rỡ","Hoa 20/10"];
