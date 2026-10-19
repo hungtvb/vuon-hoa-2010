@@ -68,6 +68,8 @@ h1,h2,h3,.font-head{font-family:'Varela Round',sans-serif; font-weight:700; lett
 .btn.secondary{background:#fff; color:var(--accent-deep); border:1.5px solid var(--accent-soft);
   box-shadow:var(--shadow)}
 .btn:disabled{opacity:.5}
+#btnStart{font-size:1.15rem; padding:14px 20px; border:2px solid rgba(255,255,255,.85);
+  box-shadow:0 8px 24px rgba(126,87,194,.45), 0 2px 12px rgba(0,0,0,.06)}
 .hud{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; position:relative; z-index:2}
 .chip{background:#fff; border:1px solid rgba(157,132,182,.3); border-radius:var(--r-sm);
   padding:6px 14px; font-weight:500; font-size:.875rem; display:flex; align-items:center; gap:6px;

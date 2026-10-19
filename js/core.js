@@ -85,7 +85,7 @@ document.getElementById("btnReplay").addEventListener("click", ()=>{
 document.getElementById("coverFlowers").innerHTML = SPR.bloom2()+SPR.bloomX()+SPR.bloom1();
 (function(){
   const b = document.createElement("div");
-  b.className = "butterfly"; b.style.cssText = "top:6%; right:14%; width:44px";
+  b.className = "butterfly"; b.style.cssText = "top:11%; left:8%; width:44px";
   b.innerHTML = SPR.butterflyFly();
   const b2 = b.cloneNode(true); b2.style.cssText = "top:18%; right:5%; width:34px; animation-delay:1.2s";
   b2.innerHTML = SPR.beeFly();
